@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulaire entreprise - Co-Loc-k Bureaux</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/FormulaireEntreprise.css">
+</head>
+<body>
+    <div class="header">
+        <span class="menu-icon" onclick="openNav()">&#9776;</span>
+        <img src="../images/logo.png" alt="Co-Lock Logo" class="logo" onclick="window.location.href='index.php'">
+        <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
+    </div>
+
+    <div id="particles-js"></div>
+
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.php">Accueil</a>
+        <a href="EntrepriseListe.php">Voir les entreprises</a>
+        <a href="Formulaire.html">Créer une annonce (Bureaux)</a>
+        <a href="FormulaireEntreprise.html">Créer une annonce (Entreprise)</a>
+        <a href="Contact.html">Contact</a>
+    </div>
+
+    <div class="container">
+        <h1>Créer une nouvelle annonce d'entreprise</h1>
+        <form action="Annonces_entreprise.php" method="POST" enctype="multipart/form-data">
+            <div class="form-group">
+                <label for="companyName">Nom de l'entreprise</label>
+                <input type="text" id="companyName" name="companyName" placeholder="Entrez le nom de l'entreprise" required>
+            </div>
+            <div class="form-group">
+                <label for="description">Description</label>
+                <textarea id="description" name="description" placeholder="Entrez la description de l'entreprise" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="email">Adresse email</label>
+                <input type="text" id="email" name="email" placeholder="Entrez l'adresse email" required>
+            </div>
+            <div class="form-group">
+                <label for="city">Ville</label>
+                <input type="text" id="city" name="city" placeholder="Entrez la ville" required>
+            </div>
+            <div class="form-group">
+                <label for="localAddress">Adresse des locaux</label>
+                <input type="text" id="localAddress" name="localAddress" placeholder="Entrez l'adresse des locaux" required>
+            </div>
+            <div class="form-group">
+                <label for="logoEntreprise">Logo de l'entreprise</label>
+                <input type="file" id="logoEntreprise" name="logoEntreprise" accept="image/*" required>
+            </div>
+            <div class="form-group button-group">
+                <button type="submit">Créer l'annonce</button>
+            </div>
+        </form>
+    </div>
+
+    <footer>
+        &copy; 2024 Co-Loc-k Bureaux. Tous droits réservés.
+    </footer>
+
+    <script> 
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "20%";
+            document.getElementById("mySidenav").style.minWidth = "200px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.minWidth = "0px";
+            document.getElementById("mySidenav").style.width = "0";
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../scriptJs/particles-config.js"></script>
+</body>
+</html>

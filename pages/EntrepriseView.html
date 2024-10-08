@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Entreprise détails - Co-Loc-k Bureaux</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/EntrepriseView.css">
+</head>
+<body>
+    
+    <div class="header">
+        <span class="menu-icon" onclick="openNav()">&#9776;</span>
+        <img src="../images/logo.png" alt="Co-Lock Logo" class="logo" onclick="window.location.href='index.php'">
+        <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
+    </div>
+    
+    <div id="particles-js"></div>
+    
+    <div id="mySidenav" class="sidenav">
+        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+        <a href="index.php">Accueil</a>
+        <a href="EntrepriseListe.php">Voir les entreprises</a>
+        <a href="Formulaire.html">Créer une annonce (Bureaux)</a>
+        <a href="FormulaireEntreprise.html">Créer une annonce (Entreprise)</a>
+        <a href="Contact.html">Contact</a>
+    </div>
+
+    <div class="container">
+        <div class="card-detail" id="card-detail"></div>
+    </div>
+
+    <footer>
+        &copy; 2024 Co-Loc-k Bureaux. Tous droits réservés.
+    </footer>
+
+    <script>
+        function openNav() {
+            document.getElementById("mySidenav").style.width = "20%";
+            document.getElementById("mySidenav").style.minWidth = "200px";
+        }
+
+        function closeNav() {
+            document.getElementById("mySidenav").style.width = "0";
+        }
+
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        async function loadEntrepriseDetails() {
+            const entrepriseId = getQueryParam('id'); // Récupère l'ID depuis l'URL
+            console.log(`Entreprise ID: ${entrepriseId}`); // Débogage : afficher l'ID de l'entreprise
+
+            try {
+                const response = await fetch(`../scriptPhp/getEntrepriseDetails.php?id=${entrepriseId}`);
+                const entreprise = await response.json();
+
+                console.log(entreprise); // Débogage : afficher les données reçues
+
+                if (entreprise.error) {
+                    document.getElementById('card-detail').innerHTML = `<p>${entreprise.error}</p>`;
+                } else {
+                    document.getElementById('card-detail').innerHTML = `
+                        <div class="card-image">
+                            <img src="../images/${entreprise.logoEntreprise}" alt="${entreprise.nom_entreprise}">
+                        </div>
+                        <div class="card-content">
+                            <h1>${entreprise.nom_entreprise}</h1>
+                            <p class="description">${entreprise.description_entreprise}</p>
+                            <p><strong>Email : </strong><a href="mailto:${entreprise.email}">${entreprise.email}</a></p>
+                            <p><strong>Ville : </strong>${entreprise.ville}</p>
+                            <p><strong>Adresse : </strong>${entreprise.adresse_entreprise}</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Erreur lors du chargement des détails de l\'entreprise:', error);
+            }
+        }
+
+        loadEntrepriseDetails();
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script src="../scriptJs/particles-config.js"></script>
+</body>
+</html>
