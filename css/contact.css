@@ -1,0 +1,61 @@
+
+/* Conteneur principal */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    flex-grow: 1;
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.logoPage {
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.description {
+    text-align: justify;
+    margin: 20px 0;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #666;
+}
+
+.contact-info {
+    display: flex;
+    justify-content: space-between;
+    margin: 40px 0;
+    justify-content: center;
+}
+
+.contact-info div {
+    width: 45%;
+    text-align: center;
+    background-color: #f8f8f8;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-info h2 {
+    color: #333;
+    margin-bottom: 10px;
+}
+
+.contact-info p {
+    margin: 10px 0;
+    font-size: 16px;
+    color: #666;
+    
+}
+
+/* Footer sticky */

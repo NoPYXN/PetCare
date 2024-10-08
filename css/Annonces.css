@@ -1,0 +1,37 @@
+
+.container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+.sidenav a {
+    color: #fff;
+    padding: 10px 15px;
+    text-decoration: none;
+    display: block;
+}
+.sidenav a:hover {
+    background-color: #575757;
+}
+.button-home {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+.button-home:hover {
+    background-color: #0056b3;
+}
+.message {
+    font-size: 18px;
+    color: #28a745;
+    margin-bottom: 20px;
+}
