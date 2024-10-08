@@ -20,9 +20,8 @@
     <div id="mySidenav" class="sidenav">
         <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
         <a href="index.php">Accueil</a>
-        <a href="EntrepriseListe.php">Voir les entreprises</a>
-        <a href="Formulaire.html">Créer une annonce (Bureaux)</a>
-        <a href="FormulaireEntreprise.html">Créer une annonce (Entreprise)</a>
+        <a href="Formulaire.html">Gérer les informations</a>
+        <a href="FormulaireVet.html">Ajouter des informations médicals</a>
         <a href="Contact.html">Contact</a>
     </div>
 
