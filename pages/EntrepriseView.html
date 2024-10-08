@@ -31,7 +31,7 @@
     </div>
 
     <footer>
-        &copy; 2024 Co-Loc-k Bureaux. Tous droits réservés.
+        &copy; 2024 Pet'Care. Tous droits réservés.
     </footer>
 
     <script>
