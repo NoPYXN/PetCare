@@ -102,8 +102,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         ?>
         <a href="index.php" class="button-home">Retour à l'accueil</a>
     </div>
-
-    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
-    <script src="../scriptJs/particles-config.js"></script>
 </body>
 </html>
