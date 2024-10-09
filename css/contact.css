@@ -58,4 +58,16 @@ h1 {
     
 }
 
-/* Footer sticky */
+table {
+    width: 100%; /* S'assure que le tableau utilise toute la largeur disponible */
+    border-collapse: collapse; /* Pour éviter les doubles bordures */
+    margin-top: 20px; /* Marge au-dessus du tableau */
+}
+th, td {
+    border: 1px solid #ccc; /* Bordure des cellules */
+    padding: 10px; /* Ajout de padding pour espacer le texte */
+    text-align: left; /* Alignement du texte à gauche */
+}
+th {
+    background-color: #f2f2f2; /* Couleur de fond pour les en-têtes */
+}

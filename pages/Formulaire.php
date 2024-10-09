@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Données médicals - Pet'Care</title>
+    <title>Données médicales - Pet'Care</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/Annonces.css">
 </head>
@@ -21,8 +21,9 @@
 
     <div class="container">
         <?php
+
         $host = 'localhost';
-        $dbname = 'pet\'care';
+        $dbname = "pet'care";
         $username = 'root';
         $password = 'root';
 
@@ -36,8 +37,10 @@
                 $breed = $_POST['breed'];
                 $gender = $_POST['gender'];
                 $birth_date = $_POST['birth_date'];
-                $userId = $_POST['userId'];
+                $userId = $_POST['userId']; // Utilise l'ID de l'utilisateur connecté à partir de la session
+                $idPet = $_POST['idPet']; // L'ID de l'animal passé via le formulaire
 
+                // Gestion de l'image
                 $photoPath = '';
                 if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
                     $uploads_dir = '../images';
@@ -47,13 +50,16 @@
                     move_uploaded_file($tmp_name, $photoPath);
                 }
 
-                $stmt = $pdo->prepare("INSERT INTO pet (petName, species, breed, gender, birth_date, userId, photo) VALUES (:petName, :species, :breed, :gender, :birth_date, :userId, :photo)");
+                // Insertion dans la base de données avec petId
+                $stmt = $pdo->prepare("INSERT INTO pet (petName, species, breed, gender, birth_date, userId, idPet, photo)
+                                        VALUES (:petName, :species, :breed, :gender, :birth_date, :userId, :idPet, :photo)");
                 $stmt->bindParam(':petName', $petName);
                 $stmt->bindParam(':species', $species);
                 $stmt->bindParam(':breed', $breed);
                 $stmt->bindParam(':gender', $gender);
                 $stmt->bindParam(':birth_date', $birth_date);
                 $stmt->bindParam(':userId', $userId);
+                $stmt->bindParam(':idPet', $idPet);
                 $stmt->bindParam(':photo', $photoPath);
 
                 if ($stmt->execute()) {

@@ -49,8 +49,8 @@
                         echo "<p><strong>Date de naissance:</strong> " . htmlspecialchars($pet['birth_date']) . "</p>";
                         echo "<p><strong>Coordonnées:</strong> " . htmlspecialchars($pet['phoneNumber']) . "</p>";
                     } else {
-                        header("Location: FormulaireInformations.php");
-        exit();
+                        header("Location: FormulaireInformations.php?id=" . urlencode($id));
+                        exit();
                     }
                 } else {
                     echo "<p>Aucun ID d'animal n'a été spécifié.</p>";
