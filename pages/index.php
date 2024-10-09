@@ -22,7 +22,7 @@
         <a href="index.php">Accueil</a>
         <a href="Formulaire.html">Gérer les informations</a>
         <a href="FormulaireVet.html">Ajouter des informations médicals</a>
-        <a href="Contact.html">Contact</a>
+        <a href="Contact.php">Contact</a>
     </div>
 
     <div class="container" id="cards-container">
