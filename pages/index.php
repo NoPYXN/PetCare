@@ -9,7 +9,7 @@
 </head>
 <body>
 
-<div class="header">
+    <div class="header">
         <img src="../images/logo.png" alt="Co-Lock Logo" class="logo" onclick="window.location.href='index.php'">
         <nav class="nav-links">
             <a href="index.php">Accueil</a>

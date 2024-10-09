@@ -3,24 +3,21 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Contact - Pet'Care</title>
+    <title>Informations - Pet'Care</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/contact.css">
 </head>
 <body>
-    <div class="header">
-        <span class="menu-icon" onclick="openNav()">&#9776;</span>
-        <img src="../images/logo.png" alt="Pet'Care" class="logo" onclick="window.location.href='index.php'">
-        <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
-    </div>
-
     
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="index.php">Accueil</a>
-        <a href="Formulaire.html">Gérer les informations</a>
-        <a href="FormulaireVet.html">Ajouter des informations médicals</a>
-        <a href="Contact.html">Contact</a>
+    <div class="header">
+        <img src="../images/logo.png" alt="Co-Lock Logo" class="logo" onclick="window.location.href='index.php'">
+        <nav class="nav-links">
+            <a href="index.php">Accueil</a>
+            <a href="Formulaire.html">Gérer les informations</a>
+            <a href="FormulaireVet.html">Ajouter des informations médicales</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+        <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
     </div>
 
     <div class="container">
