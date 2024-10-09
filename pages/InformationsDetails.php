@@ -31,18 +31,36 @@
             $password = 'root';
 
             try {
+                // Connexion à la base de données
                 $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
+                // Vérifier si l'ID est présent dans l'URL
                 if (isset($_GET['id'])) {
                     $id = $_GET['id'];
                 
-                    $stmt = $pdo->prepare("SELECT p.*, u.*, v.* FROM pet p JOIN user u ON p.userId = u.userId JOIN visit v ON p.idPet = v.petId WHERE p.idPet = :id;");
+                    // Requête SQL avec des jointures explicites
+                    $stmt = $pdo->prepare("
+                        SELECT * 
+                        FROM pet 
+                        JOIN user ON pet.userId = user.userId 
+                        JOIN visit ON pet.idPet = visit.petId 
+                        WHERE pet.idPet = :id
+                    ");
                     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                     $stmt->execute();
                 
+                    // Affichage du nombre de résultats pour débogage
+                    echo "Nombre de résultats : " . $stmt->rowCount() . "<br>";
+
+                    // Vérifier s'il y a des résultats
                     if ($stmt->rowCount() > 0) {
                         $pet = $stmt->fetch(PDO::FETCH_ASSOC);
+
+                        // Debugging: afficher toutes les données récupérées
+                        var_dump($pet);
+
+                        // Afficher les informations de l'animal
                         echo "<h1>Détails de l'animal</h1>";
                         echo "<p><strong>Nom du propriétaire:</strong> " . htmlspecialchars($pet['name']) . "</p>";
                         echo "<p><strong>Téléphone:</strong> " . htmlspecialchars($pet['phoneNumber']) . "</p>";
@@ -57,7 +75,9 @@
                         echo "<p><strong>Diagnostique:</strong> " . htmlspecialchars($pet['diagnostic']) . "</p>";
                         echo "<p><strong>Traitement:</strong> " . htmlspecialchars($pet['treatment']) . "</p>";
                         echo "<p><strong>Notes:</strong> " . htmlspecialchars($pet['notes']) . "</p>";
-                    } 
+                    } else {
+                        echo "<p>Aucun résultat trouvé pour cet ID.</p>";
+                    }
                 } else {
                     echo "<p>Aucun ID d'animal n'a été spécifié.</p>";
                 }

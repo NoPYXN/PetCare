@@ -1,16 +1,17 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Index - Co-Loc-k Bureaux</title>
+    <title>Accueil - Pet'Care</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
 
+    <!-- En-tête avec logo et navigation -->
     <div class="header">
-        <img src="../images/logo.png" alt="Co-Lock Logo" class="logo" onclick="window.location.href='index.php'">
+        <img src="../images/logo.png" alt="Logo Pet'Care" class="logo" onclick="window.location.href='index.php'">
         <nav class="nav-links">
             <a href="index.php">Accueil</a>
             <a href="Formulaire.html">Gérer les informations</a>
@@ -20,60 +21,45 @@
         <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
     </div>
 
+    <!-- Section principale -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Bienvenue chez Pet'Care</h1>
+            <p>Pet'Care est une solution innovante pour numériser et centraliser toutes les informations médicales de vos animaux. Scannez simplement notre QR code pour accéder rapidement aux données de santé et aux informations de contact du propriétaire.</p>
+            <button class="cta-button" onclick="window.location.href='Formulaire.html'">Commencez dès maintenant</button>
+        </div>
+        <img src="../images/chien_heureux.jpg" alt="Animaux heureux" class="hero-image">
+    </section>
+
+    <!-- Section avec des cartes de fonctionnalités -->
     <div class="container" id="cards-container">
-        <!-- Les cartes seront insérées ici dynamiquement -->
+        <div class="card">
+            <h2>Numérisation des Données</h2>
+            <p>Centralisez les informations médicales de votre animal de manière sécurisée et accessible en ligne.</p>
+            <img src="../images/archivage.jpg" alt="Numérisation" class="card-image">
+        </div>
+
+        <div class="card">
+            <h2>QR Code Intégré</h2>
+            <p>Scannez le QR code pour retrouver facilement le propriétaire d'un animal perdu et accéder à ses informations médicales.</p>
+            <img src="../images/qr_code.png" alt="QR Code" class="card-image">
+        </div>
+
+        <div class="card">
+            <h2>Partage sécurisé</h2>
+            <p>Partagez rapidement les informations médicales de votre animal avec des vétérinaires ou des institutions autorisées.</p>
+            <img src="../images/share.png" alt="Partage sécurisé" class="card-image">
+        </div>
     </div>
 
+    <!-- Pied de page -->
     <footer>
         &copy; 2024 Pet'Care. Tous droits réservés.
+        <div class="footer-links">
+            <a href="mentions-legales.html">Mentions légales</a>
+            <a href="politique-de-confidentialite.html">Politique de confidentialité</a>
+        </div>
     </footer>
 
-    <script>
-        // Fonction pour créer une nouvelle carte
-        function createCard(imageSrc, title, price_hour, id) {
-            // Crée un conteneur pour la carte
-            const card = document.createElement('a');
-            card.className = 'card';
-            card.href = `AnnoncesView.html?id=${id}`; // Ajoute l'identifiant à l'URL
-
-            // Crée l'image
-            const img = document.createElement('img');
-            img.src = "../images/" + imageSrc; // Ajout du chemin correct pour les images
-            img.alt = title;
-
-            // Crée le titre
-            const h3 = document.createElement('h3');
-            h3.textContent = title;
-
-            // Crée le prix
-            const p = document.createElement('p');
-            p.textContent = price_hour ? price_hour + ' €/h' : '';
-
-            // Ajoute les éléments à la carte
-            card.appendChild(img);
-            card.appendChild(h3);
-            card.appendChild(p);
-
-            // Ajoute la carte au conteneur
-            document.getElementById('cards-container').appendChild(card);
-        }
-
-        // Fonction pour charger les annonces
-        async function loadAnnonces() {
-            try {
-                const response = await fetch('../scriptPhp/connexion.php'); // Le fichier PHP qui retourne les annonces
-                const annonces = await response.json();
-
-                annonces.forEach(annonce => {
-                    createCard(annonce.image, annonce.title, annonce.price_hour, annonce.id); // Passe l'identifiant
-                });
-            } catch (error) {
-                console.error('Erreur lors du chargement des annonces:', error);
-            }
-        }
-
-        // Charger les annonces au chargement de la page
-        loadAnnonces();
-    </script>
 </body>
 </html>
