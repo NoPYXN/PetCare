@@ -37,7 +37,7 @@
                 if (isset($_GET['id'])) {
                     $id = $_GET['id'];
                 
-                    $stmt = $pdo->prepare("SELECT * FROM pet, user, visit WHERE pet.idPet = :id AND user.userId = pet.userId AND pet.idPet = visit.petId");
+                    $stmt = $pdo->prepare("SELECT p.*, u.*, v.* FROM pet p JOIN user u ON p.userId = u.userId JOIN visit v ON p.idPet = v.petId WHERE p.idPet = :id;");
                     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                     $stmt->execute();
                 
