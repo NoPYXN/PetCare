@@ -3,11 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Données - Pet'Care</title>
+    <title>Données médicals - Pet'Care</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/Annonces.css">
+
 </head>
 <body>
+
     <div class="header">
         <img src="../images/logo.png" alt="Co-Lock Logo" class="logo" onclick="window.location.href='index.php'">
         <nav class="nav-links">
@@ -19,81 +21,55 @@
         <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
     </div>
 
-    <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "20%";
-            document.getElementById("mySidenav").style.minWidth = "200px";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.minWidth = "0px";
-            document.getElementById("mySidenav").style.width = "0";
-        }
-    </script>
-
     <div class="container">
         <?php
-        // Connexion à la base de données
-        $servername = "localhost";
-        $username = "root"; // Remplacez par votre nom d'utilisateur MySQL
-        $password = "root"; // Remplacez par votre mot de passe MySQL
-        $dbname = "co_lock"; // Remplacez par le nom de votre base de données
+        $host = 'localhost';
+        $dbname = 'pet\'care';
+        $username = 'root';
+        $password = 'root';
 
-        $conn = new mysqli($servername, $username, $password, $dbname);
+        try {
+            $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
+            $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        // Vérifier la connexion
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+            if ($_SERVER["REQUEST_METHOD"] == "POST") {
+                $petName = $_POST['petName'];
+                $species = $_POST['species'];
+                $breed = $_POST['breed'];
+                $gender = $_POST['gender'];
+                $birth_date = $_POST['birth_date'];
+                $userId = $_POST['userId'];
 
-// Vérifier si le formulaire a été soumis
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    // Récupérer et sécuriser les données du formulaire
-    $title = $conn->real_escape_string($_POST['title']);
-    $description = $conn->real_escape_string($_POST['description']);
-    $price_hour = $conn->real_escape_string($_POST['price_hour']);
-    $price_day = $conn->real_escape_string($_POST['price_day']);
-    $price_week = $conn->real_escape_string($_POST['price_week']);
-    $city = $conn->real_escape_string($_POST['city']);
-    $address = $conn->real_escape_string($_POST['address']);
-    $email = $conn->real_escape_string($_POST['email']);
-    
-    // Gestion de l'image uploadée
-    $image = NULL;
-    if (isset($_FILES['image']) && $_FILES['image']['error'] == 0) {
-        $imageName = basename($_FILES["image"]["name"]);
-        $targetDir = "../images/"; // Dossier où l'image sera enregistrée
-        $targetFilePath = $targetDir . $imageName;
+                $photoPath = '';
+                if (isset($_FILES['photo']) && $_FILES['photo']['error'] == 0) {
+                    $uploads_dir = '../images';
+                    $tmp_name = $_FILES['photo']['tmp_name'];
+                    $name = basename($_FILES['photo']['name']);
+                    $photoPath = "$uploads_dir/$name";
+                    move_uploaded_file($tmp_name, $photoPath);
+                }
 
-                // Vérifier si le fichier est une image valide
-                $imageFileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
-                $check = getimagesize($_FILES["image"]["tmp_name"]);
-                if($check !== false) {
-                    // Déplacer l'image vers le dossier cible
-                    if (move_uploaded_file($_FILES["image"]["tmp_name"], $targetFilePath)) {
-                        $image = $imageName; // Enregistrer le nom de l'image en base de données
-                    } else {
-                        echo "Erreur lors du téléchargement de l'image.";
-                    }
+                $stmt = $pdo->prepare("INSERT INTO pet (petName, species, breed, gender, birth_date, userId, photo) VALUES (:petName, :species, :breed, :gender, :birth_date, :userId, :photo)");
+                $stmt->bindParam(':petName', $petName);
+                $stmt->bindParam(':species', $species);
+                $stmt->bindParam(':breed', $breed);
+                $stmt->bindParam(':gender', $gender);
+                $stmt->bindParam(':birth_date', $birth_date);
+                $stmt->bindParam(':userId', $userId);
+                $stmt->bindParam(':photo', $photoPath);
+
+                if ($stmt->execute()) {
+                    echo "Animal ajouté avec succès !";
                 } else {
-                    echo "Le fichier n'est pas une image valide.";
+                    echo "Erreur lors de l'ajout de l'animal.";
                 }
             }
-
-    // Requête SQL pour insérer les données
-    $sql = "INSERT INTO annonces (title, description, price_hour, price_day, price_week, city, address, image, email)
-            VALUES ('$title', '$description', '$price_hour', '$price_day', '$price_week', '$city', '$address', '$image', '$email')";
-
-            if ($conn->query($sql) === TRUE) {
-                echo "<p class='message'>Nouvelle annonce créée avec succès.</p>";
-            } else {
-                echo "Erreur: " . $sql . "<br>" . $conn->error;
-            }
+        } catch (PDOException $e) {
+            echo "Erreur lors de la connexion à la base de données : " . $e->getMessage();
         }
-
-        $conn->close();
         ?>
-        <a href="index.php" class="button-home">Retour à l'accueil</a>
+        <br/>
+        <a href="index.php" class="button-home">Voir la page de l'animal</a>
     </div>
 </body>
 </html>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ajout de données médicals - Pet'Care</title>
+    <title>Ajout de données médicales - Pet'Care</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/FormulaireEntreprise.css">
 </head>
@@ -20,34 +20,34 @@
     </div>
 
     <div class="container">
-        <h1>Créer une nouvelle annonce d'entreprise</h1>
-        <form action="FormulaireVet.php" method="POST" enctype="multipart/form-data">
+        <h1>Ajouter des données médicales pour un chien</h1>
+        <form action="FormulaireVet.php" method="POST">
             <div class="form-group">
-                <label for="companyName">Nom de l'entreprise</label>
-                <input type="text" id="companyName" name="companyName" placeholder="Entrez le nom de l'entreprise" required>
+                <label for="petId">ID de l'animal</label>
+                <input type="number" id="petId" name="petId" placeholder="Entrez l'ID de l'animal" required>
             </div>
             <div class="form-group">
-                <label for="description">Description</label>
-                <textarea id="description" name="description" placeholder="Entrez la description de l'entreprise" required></textarea>
+                <label for="weight">Poids</label>
+                <input type="number" id="weight" name="weight" step="0.1" placeholder="Entrez le poids en kg" required>
             </div>
             <div class="form-group">
-                <label for="email">Adresse email</label>
-                <input type="text" id="email" name="email" placeholder="Entrez l'adresse email" required>
+                <label for="diagnostic">Diagnostique</label>
+                <textarea id="diagnostic" name="diagnostic" placeholder="Entrez le diagnostique" required></textarea>
             </div>
             <div class="form-group">
-                <label for="city">Ville</label>
-                <input type="text" id="city" name="city" placeholder="Entrez la ville" required>
+                <label for="treatment">Traitement</label>
+                <textarea id="treatment" name="treatment" placeholder="Entrez le traitement prescrit" required></textarea>
             </div>
             <div class="form-group">
-                <label for="localAddress">Adresse des locaux</label>
-                <input type="text" id="localAddress" name="localAddress" placeholder="Entrez l'adresse des locaux" required>
+                <label for="visit_date">Date de visite</label>
+                <input type="date" id="visit_date" name="visit_date" required>
             </div>
             <div class="form-group">
-                <label for="logoEntreprise">Logo de l'entreprise</label>
-                <input type="file" id="logoEntreprise" name="logoEntreprise" accept="image/*" required>
+                <label for="notes">Notes supplémentaires</label>
+                <textarea id="notes" name="notes" placeholder="Entrez des notes supplémentaires"></textarea>
             </div>
             <div class="form-group button-group">
-                <button type="submit">Créer l'annonce</button>
+                <button type="submit">Ajouter les données médicales</button>
             </div>
         </form>
     </div>
@@ -55,17 +55,5 @@
     <footer>
         &copy; 2024 Pet'Care. Tous droits réservés.
     </footer>
-
-    <script> 
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "20%";
-            document.getElementById("mySidenav").style.minWidth = "200px";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.minWidth = "0px";
-            document.getElementById("mySidenav").style.width = "0";
-        }
-    </script>
 </body>
 </html>

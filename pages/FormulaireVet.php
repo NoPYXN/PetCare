@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Données médicals - Pet'Care</title>
+    <title>Données médical ajouté - Pet'Care</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/Annonces.css">
 
@@ -21,77 +21,41 @@
         <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
     </div>
 
-    <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "20%";
-            document.getElementById("mySidenav").style.minWidth = "200px";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.minWidth = "0px";
-            document.getElementById("mySidenav").style.width = "0";
-        }
-    </script>
-
     <div class="container">
         <?php
-        // Connexion à la base de données
-        $servername = "localhost";
-        $username = "root"; // Remplacez par votre nom d'utilisateur MySQL
-        $password = "root"; // Remplacez par votre mot de passe MySQL
-        $dbname = "co_lock"; // Remplacez par le nom de votre base de données
+            $servername = "localhost";
+            $username = "root";
+            $password = "root";
+            $dbname = "pet'care";
 
-        $conn = new mysqli($servername, $username, $password, $dbname);
+            $conn = new mysqli($servername, $username, $password, $dbname);
 
-        // Vérifier la connexion
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+            if ($conn->connect_error) {
+                die("Erreur de connexion : " . $conn->connect_error);
+            }
 
-        // Vérifier si le formulaire a été soumis
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            // Récupérer et sécuriser les données du formulaire
-            $nom = $conn->real_escape_string($_POST['companyName']);
-            $description = $conn->real_escape_string($_POST['description']);
-            $ville = $conn->real_escape_string($_POST['city']);
-            $address = $conn->real_escape_string($_POST['localAddress']);
-            $email = $conn->real_escape_string($_POST['email']);
-            
-            // Gestion de l'image uploadée
-            $logo = NULL;
-            if (isset($_FILES['logoEntreprise']) && $_FILES['logoEntreprise']['error'] == 0) {
-                $imageName = basename($_FILES["logoEntreprise"]["name"]);
-                $targetDir = "../images/"; // Dossier où l'image sera enregistrée
-                $targetFilePath = $targetDir . $imageName;
+            if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+                $petId = $conn->real_escape_string($_POST['petId']);
+                $weight = $conn->real_escape_string($_POST['weight']);
+                $diagnostic = $conn->real_escape_string($_POST['diagnostic']);
+                $treatment = $conn->real_escape_string($_POST['treatment']);
+                $visit_date = $conn->real_escape_string($_POST['visit_date']);
+                $notes = $conn->real_escape_string($_POST['notes']);
 
-                // Vérifier si le fichier est une image valide
-                $imageFileType = strtolower(pathinfo($targetFilePath, PATHINFO_EXTENSION));
-                $check = getimagesize($_FILES["logoEntreprise"]["tmp_name"]);
-                if($check !== false) {
-                    // Déplacer l'image vers le dossier cible
-                    if (move_uploaded_file($_FILES["logoEntreprise"]["tmp_name"], $targetFilePath)) {
-                        $logo = $imageName; // Enregistrer le nom de l'image en base de données
-                    } else {
-                        echo "Erreur lors du téléchargement de l'image.";
-                    }
+                $sql = "INSERT INTO visit (petId, weight, diagnostic, treatment, visit_date, notes)
+                        VALUES ('$petId', '$weight', '$diagnostic', '$treatment', '$visit_date', '$notes')";
+
+                if ($conn->query($sql) === TRUE) {
+                    echo "<p>Les données médicales ont été ajoutées avec succès.</p>";
                 } else {
-                    echo "Le fichier n'est pas une image valide.";
+                    echo "<p>Une erreur est survenue.</p>";
                 }
             }
 
-            // Requête SQL pour insérer les données
-            $sql = "INSERT INTO annonces_entreprise (nom_entreprise, description_entreprise, ville, adresse_entreprise, logoEntreprise, email)
-                    VALUES ('$nom', '$description', '$ville', '$address', '$logo', '$email')";
-
-            if ($conn->query($sql) === TRUE) {
-                echo "<p class='message'>Nouvelle annonce créée avec succès.</p>";
-            } else {
-                echo "Erreur: " . $sql . "<br>" . $conn->error;
-            }
-        }
-
-        $conn->close();
+            $conn->close();
         ?>
+
+        <br/>
         <a href="index.php" class="button-home">Retour à l'accueil</a>
     </div>
 </body>
