@@ -9,20 +9,15 @@
 </head>
 <body>
 
-    <div class="header">
-        <span class="menu-icon" onclick="openNav()">&#9776;</span>
+<div class="header">
         <img src="../images/logo.png" alt="Co-Lock Logo" class="logo" onclick="window.location.href='index.php'">
+        <nav class="nav-links">
+            <a href="index.php">Accueil</a>
+            <a href="Formulaire.html">Gérer les informations</a>
+            <a href="FormulaireVet.html">Ajouter des informations médicales</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
         <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
-    </div>
-
-    <div id="particles-js"></div>
-
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-        <a href="index.php">Accueil</a>
-        <a href="Formulaire.html">Gérer les informations</a>
-        <a href="FormulaireVet.html">Ajouter des informations médicals</a>
-        <a href="Contact.html">Contact</a>
     </div>
 
     <div class="container" id="cards-container">
@@ -34,16 +29,6 @@
     </footer>
 
     <script>
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "20%";
-            document.getElementById("mySidenav").style.minWidth = "200px";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.minWidth = "0px";
-            document.getElementById("mySidenav").style.width = "0";
-        }
-
         // Fonction pour créer une nouvelle carte
         function createCard(imageSrc, title, price_hour, id) {
             // Crée un conteneur pour la carte
@@ -72,8 +57,6 @@
             // Ajoute la carte au conteneur
             document.getElementById('cards-container').appendChild(card);
         }
-
-
 
         // Fonction pour charger les annonces
         async function loadAnnonces() {
