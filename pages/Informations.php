@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="../css/contact.css">
 </head>
 <body>
-    
+
     <div class="header">
         <img src="../images/logo.png" alt="Co-Lock Logo" class="logo" onclick="window.location.href='index.php'">
         <nav class="nav-links">
@@ -25,27 +25,22 @@
 
         <div class="description">
             <?php
-            // Configuration de la base de données
             $host = 'localhost';
-            $dbname = 'pet\'care'; // Nom de la base de données
-            $username = 'root'; // Nom d'utilisateur
-            $password = 'root'; // Mot de passe
+            $dbname = 'pet\'care';
+            $username = 'root';
+            $password = 'root';
 
             try {
-                // Connexion à la base de données
                 $pdo = new PDO("mysql:host=$host;dbname=$dbname;charset=utf8", $username, $password);
                 $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             
-                // Vérification si un ID d'animal est passé en paramètre
                 if (isset($_GET['id'])) {
                     $id = $_GET['id'];
                 
-                    // Requête pour récupérer les informations de l'animal
                     $stmt = $pdo->prepare("SELECT * FROM pet, user WHERE idPet = :id");
                     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                     $stmt->execute();
                 
-                    // Vérification si un animal a été trouvé
                     if ($stmt->rowCount() > 0) {
                         $pet = $stmt->fetch(PDO::FETCH_ASSOC);
                         echo "<h1>Détails de l'animal</h1>";
@@ -54,7 +49,8 @@
                         echo "<p><strong>Date de naissance:</strong> " . htmlspecialchars($pet['birth_date']) . "</p>";
                         echo "<p><strong>Coordonnées:</strong> " . htmlspecialchars($pet['phoneNumber']) . "</p>";
                     } else {
-                        echo "<p>Aucun animal trouvé avec cet ID.</p>";
+                        header("Location: Formulaire.html");
+        exit();
                     }
                 } else {
                     echo "<p>Aucun ID d'animal n'a été spécifié.</p>";
