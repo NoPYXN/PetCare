@@ -6,10 +6,8 @@
     <title>Données médicals - Pet'Care</title>
     <link rel="stylesheet" href="../css/styles.css">
     <link rel="stylesheet" href="../css/Annonces.css">
-
 </head>
 <body>
-
     <div class="header">
         <img src="../images/logo.png" alt="Co-Lock Logo" class="logo" onclick="window.location.href='index.php'">
         <nav class="nav-links">

@@ -1,0 +1,54 @@
+<?php
+// Démarrer une session
+session_start();
+
+// Vérifier si l'utilisateur est connecté
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php"); // Rediriger vers la page de connexion si non connecté
+    exit();
+}
+
+// Récupérer les informations de l'utilisateur à partir de la session
+$user_id = $_SESSION['user_id'];
+$user_name = $_SESSION['user_name'];
+$user_email = $_SESSION['user_email'];
+$user_phone = $_SESSION['user_phone'];
+$user_veterinaire = $_SESSION['user_veterinaire'];
+?>
+
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Profil de l'utilisateur - Pet'Care</title>
+    <link rel="stylesheet" href="../css/styles.css">
+</head>
+<body>
+    <div class="header">
+        <img src="../images/logo.png" alt="Pet'Care Logo" class="logo" onclick="window.location.href='index.php'">
+        <nav class="nav-links">
+            <a href="index.php">Accueil</a>
+            <a href="Formulaire.html">Gérer les informations</a>
+            <a href="FormulaireVet.html">Ajouter des informations médicales</a>
+            <a href="Contact.php">Contact</a>
+        </nav>
+        <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
+    </div>
+
+    <div class="container">
+        <h1>Profil de l'utilisateur</h1>
+        <p><strong>ID :</strong> <?php echo htmlspecialchars($user_id); ?></p>
+        <p><strong>Nom :</strong> <?php echo htmlspecialchars($user_name); ?></p>
+        <p><strong>Email :</strong> <?php echo htmlspecialchars($user_email); ?></p>
+        <p><strong>Numéro de téléphone :</strong> <?php echo htmlspecialchars($user_phone); ?></p>
+        <p><strong>Vetérinaire :</strong> <?php echo htmlspecialchars($user_veterinaire); ?></p>
+        
+        <a href="logout.php" class="button">Se déconnecter</a>
+    </div>
+
+    <footer>
+        &copy; 2024 Pet'Care. Tous droits réservés.
+    </footer>
+</body>
+</html>

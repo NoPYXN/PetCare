@@ -49,7 +49,7 @@
                         echo "<p><strong>Date de naissance:</strong> " . htmlspecialchars($pet['birth_date']) . "</p>";
                         echo "<p><strong>Coordonnées:</strong> " . htmlspecialchars($pet['phoneNumber']) . "</p>";
                     } else {
-                        header("Location: Formulaire.html");
+                        header("Location: FormulaireInformations.php");
         exit();
                     }
                 } else {
