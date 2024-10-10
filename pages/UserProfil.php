@@ -23,6 +23,7 @@ $user_veterinaire = $_SESSION['user_veterinaire'];
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Profil de l'utilisateur - Pet'Care</title>
     <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/UserProfil.css">
 </head>
 <body>
     <div class="header">
@@ -42,9 +43,10 @@ $user_veterinaire = $_SESSION['user_veterinaire'];
         <p><strong>Nom :</strong> <?php echo htmlspecialchars($user_name); ?></p>
         <p><strong>Email :</strong> <?php echo htmlspecialchars($user_email); ?></p>
         <p><strong>Numéro de téléphone :</strong> <?php echo htmlspecialchars($user_phone); ?></p>
-        <p><strong>Vetérinaire :</strong> <?php echo htmlspecialchars($user_veterinaire); ?></p>
+        <p><strong>Vétérinaire :</strong> <?php echo ($user_veterinaire == 1) ? 'Oui' : 'Non'; ?></p>
         
-        <a href="logout.php" class="button">Se déconnecter</a>
+        <a href="DemandeVeterinaire.html" class="aButton">Je suis vétérinaire</a>
+        <a href="logout.php" class="aButton">Se déconnecter</a>
     </div>
 
     <footer>

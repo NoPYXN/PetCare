@@ -1,0 +1,51 @@
+.container {
+    padding: 20px;
+    margin: 20px auto; /* Centre verticalement et horizontalement */
+    max-width: 600px;
+    background: #fff;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 15px;
+    padding: 0 5%; /* Ajoute un padding égal à gauche et à droite */
+    box-sizing: border-box; /* Inclut le padding dans la largeur totale */
+}
+
+.form-group label {
+    display: block;
+    margin-top: 15px;
+    margin-bottom: 5px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.form-group input, .form-group textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    box-sizing: border-box; /* Assure que le padding ne déborde pas */
+}
+
+.form-group textarea {
+    height: 100px;
+    resize: vertical;
+}
+
+.form-group button {
+    padding: 10px 20px;
+    background-color: #3EB489;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto; /* Centre le bouton et ajoute de l'espace autour */
+}
+
+.form-group button:hover {
+    background-color: #3EB489;
+}
