@@ -4,8 +4,8 @@ function createHeader() {
         <img src="../images/logo.png" alt="Logo Pet'Care" class="logo" onclick="window.location.href='index.php'">
         <nav class="nav-links">
             <a href="index.php">Accueil</a>
-            <a href="QrCode.html">Gérer les informations</a>
-            <a href="Achat.html">Ajouter des informations médicales</a>
+            <a href="QrCode.html">Générer un Qr Code</a>
+            <a href="Achat.html">Acheter un médaillon</a>
             <a href="Contact.html">Contact</a>
         </nav>
         <div class="profile-icon" onclick="window.location.href='UserProfil.php'">

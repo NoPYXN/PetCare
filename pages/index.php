@@ -17,7 +17,7 @@
         <div class="hero-content">
             <h1>Bienvenue chez Pet'Care</h1>
             <p>Pet'Care est une solution innovante pour numériser et centraliser toutes les informations médicales de vos animaux. Scannez simplement notre QR code pour accéder rapidement aux données de santé et aux informations de contact du propriétaire.</p>
-            <button class="cta-button" onclick="window.location.href='Formulaire.html'">Commencez dès maintenant</button>
+            <button class="cta-button" onclick="window.location.href='QrCode.html'">Commencez dès maintenant</button>
         </div>
         <img src="../images/chien_heureux.jpg" alt="Animaux heureux" class="hero-image">
     </section>
@@ -39,7 +39,7 @@
         <div class="card">
             <h2>Partage sécurisé</h2>
             <p>Partagez rapidement les informations médicales de votre animal avec des vétérinaires ou des institutions autorisées.</p>
-            <img src="../images/share.png" alt="Partage sécurisé" class="card-image">
+            <img src="../images/share.jpg" alt="Partage sécurisé" class="card-image">
         </div>
     </div>
 

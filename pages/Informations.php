@@ -59,6 +59,10 @@
             echo "<a href='FormulaireInformations.php?id=" . urlencode($id) . "'>";
             echo "<button class='aButton'>Modifier les informations</button>";
             echo "</a>";
+
+            echo "<a href='InformationsDetails.php?id=" . urlencode($id) . "'>";
+            echo "<button class='aButton'>Voir plus d'informations</button>";
+            echo "</a>";
             ?>
         </div>
     </div>
