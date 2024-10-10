@@ -10,16 +10,8 @@
 <body>
 
     <!-- En-tête avec logo et navigation -->
-    <div class="header">
-        <img src="../images/logo.png" alt="Logo Pet'Care" class="logo" onclick="window.location.href='index.php'">
-        <nav class="nav-links">
-            <a href="index.php">Accueil</a>
-            <a href="Formulaire.html">Gérer les informations</a>
-            <a href="FormulaireVet.html">Ajouter des informations médicales</a>
-            <a href="Contact.html">Contact</a>
-        </nav>
-        <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
-    </div>
+    <header></header>
+    <script src="../header.js"></script>
 
     <!-- Section principale -->
     <section class="hero">
