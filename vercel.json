@@ -11,20 +11,5 @@
       "src": "/(.*)",
       "dest": "/pages/index.html"
     }{
-  "version": 2,
-  "builds": [
-    {
-      "src": "pages/**/*",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/pages/$1"
-    }
-  ]
-}
-
   ]
 }
