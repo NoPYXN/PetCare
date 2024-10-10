@@ -23,22 +23,15 @@ $is_vet = isset($_SESSION['user_veterinaire']) && $_SESSION['user_veterinaire'] 
     <link rel="stylesheet" href="../css/FormulaireVisit.css">
 </head>
 <body>
-    <div class="header">
-        <img src="../images/logo.png" alt="Pet'Care Logo" class="logo" onclick="window.location.href='index.php'">
-        <nav class="nav-links">
-            <a href="index.php">Accueil</a>
-            <a href="Formulaire.html">Gérer les informations</a>
-            <a href="FormulaireVet.html">Ajouter des informations médicales</a>
-            <a href="Contact.html">Contact</a>
-        </nav>
-        <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
-    </div>
+    
+    <header></header>
+    <script src="../header.js"></script>
 
     <div class="container">
         <h1>Ajouter des données médicales pour un chien</h1>
 
         <?php if ($is_vet): // Si l'utilisateur est un vétérinaire ?>
-            <form action="FormulaireVet.php" method="POST">
+            <form action="ResultatFormulaireVisit.php" method="POST">
                 <input type="hidden" id="idPet" name="idPet" value="<?php echo htmlspecialchars($idPet); ?>">
 
                 <div class="form-group">

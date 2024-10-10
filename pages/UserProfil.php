@@ -26,16 +26,9 @@ $user_veterinaire = $_SESSION['user_veterinaire'];
     <link rel="stylesheet" href="../css/UserProfil.css">
 </head>
 <body>
-    <div class="header">
-        <img src="../images/logo.png" alt="Pet'Care Logo" class="logo" onclick="window.location.href='index.php'">
-        <nav class="nav-links">
-            <a href="index.php">Accueil</a>
-            <a href="Formulaire.html">Gérer les informations</a>
-            <a href="FormulaireVet.html">Ajouter des informations médicales</a>
-            <a href="Contact.php">Contact</a>
-        </nav>
-        <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
-    </div>
+    
+    <header></header>
+    <script src="../header.js"></script>
 
     <div class="container">
         <h1>Profil de l'utilisateur</h1>
@@ -45,7 +38,7 @@ $user_veterinaire = $_SESSION['user_veterinaire'];
         <p><strong>Numéro de téléphone :</strong> <?php echo htmlspecialchars($user_phone); ?></p>
         <p><strong>Vétérinaire :</strong> <?php echo ($user_veterinaire == 1) ? 'Oui' : 'Non'; ?></p>
         
-        <a href="DemandeVeterinaire.html" class="aButton">Je suis vétérinaire</a>
+        <a href="DemandeVeterinaire.php" class="aButton">Je suis vétérinaire</a>
         <a href="logout.php" class="aButton">Se déconnecter</a>
     </div>
 

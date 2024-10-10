@@ -10,6 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 // Récupération de l'ID de l'animal depuis l'URL
 $idPet = isset($_GET['id']) ? $_GET['id'] : null;
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -20,16 +21,9 @@ $idPet = isset($_GET['id']) ? $_GET['id'] : null;
     <link rel="stylesheet" href="../css/Formulaire.css">
 </head>
 <body>
-    <div class="header">
-        <img src="../images/logo.png" alt="Pet'Care Logo" class="logo" onclick="window.location.href='index.php'">
-        <nav class="nav-links">
-            <a href="index.php">Accueil</a>
-            <a href="Formulaire.html">Gérer les informations</a>
-            <a href="FormulaireVet.html">Ajouter des informations médicales</a>
-            <a href="Contact.html">Contact</a>
-        </nav>
-        <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
-    </div>
+    
+    <header></header>
+    <script src="../header.js"></script>
 
     <div class="container">
         <h1>Déposer un certificat vétérinaire</h1>

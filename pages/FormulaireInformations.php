@@ -17,20 +17,13 @@ $idPet = isset($_GET['id']) ? $_GET['id'] : null;
     <link rel="stylesheet" href="../css/Formulaire.css">
 </head>
 <body>
-    <div class="header">
-        <img src="../images/logo.png" alt="Co-Lock Logo" class="logo" onclick="window.location.href='index.php'">
-        <nav class="nav-links">
-            <a href="index.php">Accueil</a>
-            <a href="Formulaire.html">Gérer les informations</a>
-            <a href="FormulaireVet.html">Ajouter des informations médicales</a>
-            <a href="Contact.html">Contact</a>
-        </nav>
-        <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
-    </div>
+    
+<header></header>
+<script src="../header.js"></script>
 
     <div class="container">
         <h1>Ajouter un nouvel animal</h1>
-        <form action="Formulaire.php" method="POST" enctype="multipart/form-data">
+        <form action="ResultatFormulaire.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="petName">Nom de l'animal</label>
                 <input type="text" id="petName" name="petName" placeholder="Entrez le nom de l'animal" required>
