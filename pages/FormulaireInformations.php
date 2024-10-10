@@ -1,13 +1,10 @@
 <?php
 session_start();
-
-// Redirection si l'utilisateur n'est pas connecté
 if (!isset($_SESSION['user_id'])) {
     header("Location: login.php");
     exit();
 }
 
-// Récupération de l'ID de l'animal depuis l'URL
 $idPet = isset($_GET['id']) ? $_GET['id'] : null;
 ?>
 <!DOCTYPE html>
@@ -58,10 +55,8 @@ $idPet = isset($_GET['id']) ? $_GET['id'] : null;
                 <input type="date" id="birth_date" name="birth_date" required>
             </div>
 
-            <!-- Champ caché pour l'ID utilisateur -->
             <input type="hidden" id="userId" name="userId" value="<?php echo $_SESSION['user_id']; ?>">
 
-            <!-- Champ caché pour l'ID de l'animal -->
             <input type="hidden" id="idPet" name="idPet" value="<?php echo htmlspecialchars($idPet); ?>">
 
             <div class="form-group">
