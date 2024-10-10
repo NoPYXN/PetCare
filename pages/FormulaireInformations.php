@@ -30,7 +30,7 @@ $idPet = isset($_GET['id']) ? $_GET['id'] : null;
 
     <div class="container">
         <h1>Ajouter un nouvel animal</h1>
-        <form action="Formulaire.php" method="POST" enctype="multipart/form-data">
+        <form action="ResultatFormulaire.php" method="POST" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="petName">Nom de l'animal</label>
                 <input type="text" id="petName" name="petName" placeholder="Entrez le nom de l'animal" required>

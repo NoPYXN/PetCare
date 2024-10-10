@@ -38,7 +38,7 @@ $is_vet = isset($_SESSION['user_veterinaire']) && $_SESSION['user_veterinaire'] 
         <h1>Ajouter des données médicales pour un chien</h1>
 
         <?php if ($is_vet): // Si l'utilisateur est un vétérinaire ?>
-            <form action="FormulaireVet.php" method="POST">
+            <form action="ResultatFormulaireVisit.php" method="POST">
                 <input type="hidden" id="idPet" name="idPet" value="<?php echo htmlspecialchars($idPet); ?>">
 
                 <div class="form-group">

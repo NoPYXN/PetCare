@@ -45,7 +45,7 @@ $user_veterinaire = $_SESSION['user_veterinaire'];
         <p><strong>Numéro de téléphone :</strong> <?php echo htmlspecialchars($user_phone); ?></p>
         <p><strong>Vétérinaire :</strong> <?php echo ($user_veterinaire == 1) ? 'Oui' : 'Non'; ?></p>
         
-        <a href="DemandeVeterinaire.html" class="aButton">Je suis vétérinaire</a>
+        <a href="DemandeVeterinaire.php" class="aButton">Je suis vétérinaire</a>
         <a href="logout.php" class="aButton">Se déconnecter</a>
     </div>
 

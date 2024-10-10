@@ -10,6 +10,7 @@ if (!isset($_SESSION['user_id'])) {
 // Récupération de l'ID de l'animal depuis l'URL
 $idPet = isset($_GET['id']) ? $_GET['id'] : null;
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
