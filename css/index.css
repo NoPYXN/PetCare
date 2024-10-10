@@ -1,17 +1,16 @@
 .container {
     padding: 20px;
-    margin: 20px auto; /* Centre le container */
-    max-width: 600px;
-    background: rgba(255, 255, 255, 0.8); /* Arrière-plan blanc avec 80% d'opacité */
+    margin: 20px auto;
+    background: rgba(255, 255, 255, 0.8);
     border-radius: 8px;
-    text-align: center; /* Centre le contenu à l'intérieur du container */
+    text-align: center;
 }
 
 .card {
     border: 1px solid #ddd;
     border-radius: 8px;
     padding: 10px;
-    width: calc(25% - 20px); /* Ajuste la largeur pour tenir compte du gap */
+    width: calc(25% - 20px);
     box-sizing: border-box;
     text-align: center;
 }
@@ -86,7 +85,7 @@ img {
 }
 
 .hero-image {
-    max-width: 45%;
+    max-width: 35%;
     border-radius: 10px;
 }
 
