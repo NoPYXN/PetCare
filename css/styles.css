@@ -3,9 +3,13 @@ html, body {
     margin: 0;
     padding: 0;
     overflow-x: hidden;
-    background-color: #F6E8D4;
+    background-image: url('../images/clinic.jpg');
+    background-size: 100% 100%; /* Étire l'image pour couvrir tout l'espace */
+    background-position: center; /* Centre l'image */
+    background-repeat: no-repeat; /* Évite la répétition de l'image */
     font-family: 'Arial', sans-serif;
 }
+
 
 .header {
     background-color: #3EB489;
@@ -65,7 +69,7 @@ html, body {
 .aButton {
     padding: 10px 20px;
     background-color: #3EB489;
-    color: #000;
+    color: #fff;
     border: none;
     border-radius: 4px;
     font-size: 16px;

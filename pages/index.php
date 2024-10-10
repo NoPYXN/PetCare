@@ -8,20 +8,22 @@
     <link rel="stylesheet" href="../css/index.css">
 </head>
 <body>
-
-    <!-- En-tête avec logo et navigation -->
     <div class="header">
         <img src="../images/logo.png" alt="Logo Pet'Care" class="logo" onclick="window.location.href='index.php'">
         <nav class="nav-links">
             <a href="index.php">Accueil</a>
-            <a href="Formulaire.html">Gérer les informations</a>
-            <a href="FormulaireVet.html">Ajouter des informations médicales</a>
+            <a href="QrCode.html">Générer un Qr code</a>
+            <a href="Achat.html">Acheter un médaillon</a>
             <a href="Contact.html">Contact</a>
         </nav>
-        <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
+        <div class="profile-icon" onclick="window.location.href='UserProfil.php'">
+            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" class="bi bi-dog" viewBox="0 0 16 16">
+                <path d="M6.5 8a3.5 3.5 0 0 0-3.5 3.5v2a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1v-2A3.5 3.5 0 0 0 6.5 8zM6 9a2 2 0 1 1-2 2 2 2 0 0 1 2-2zm6.5-5a1 1 0 0 1 .878.471l1.173 2.341a1 1 0 0 1-.096 1.125l-2.5 3.5a1 1 0 0 1-1.54-1.233l2.5-3.5a1 1 0 0 1 .21-.15L11.5 4a1 1 0 0 1 1-1zM3 3.5a1.5 1.5 0 1 1 3 0A1.5 1.5 0 0 1 3 3.5zM1.5 5A1.5 1.5 0 0 1 3 3.5c0-.832.672-1.5 1.5-1.5a1.5 1.5 0 0 1 0 3A1.5 1.5 0 0 1 1.5 5z"/>
+            </svg>
+        </div>
+
     </div>
 
-    <!-- Section principale -->
     <section class="hero">
         <div class="hero-content">
             <h1>Bienvenue chez Pet'Care</h1>

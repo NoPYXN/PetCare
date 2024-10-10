@@ -1,9 +1,10 @@
 .container {
-    flex: 1; /* Prend toute la hauteur disponible entre le header et le footer */
-    display: flex;
-    justify-content: center;
-    align-items: center;
     padding: 20px;
+    margin: 20px auto; /* Centre le container */
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.8); /* Arrière-plan blanc avec 80% d'opacité */
+    border-radius: 8px;
+    text-align: center; /* Centre le contenu à l'intérieur du container */
 }
 
 

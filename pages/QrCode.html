@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Accueil - Pet'Care</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/QrCode.css">
+    <script src="https://davidshimjs.github.io/qrcodejs/qrcode.min.js"></script>
+</head>
+<body>
+    <div class="header">
+        <img src="../images/logo.png" alt="Logo Pet'Care" class="logo" onclick="window.location.href='index.php'">
+        <nav class="nav-links">
+            <a href="index.php">Accueil</a>
+            <a href="Formulaire.html">Gérer les informations</a>
+            <a href="FormulaireVet.html">Ajouter des informations médicales</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+        <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="container">
+        <h1>Générer un QR Code pour un lien spécifique</h1>
+        
+        <!-- Bouton pour générer le QR Code -->
+        <button onclick="generateQrCode()" class="aButton">Générer QR Code</button>
+        
+        <!-- Conteneur où le QR code apparaîtra -->
+        <div id="qrcode"></div>
+
+        <!-- Affichage du lien après génération du QR code -->
+        <a id="qrLink" href="#" class="qrcode-link" target="_blank"></a>
+    </div>
+
+    <footer>
+        &copy; 2024 Pet'Care. Tous droits réservés.
+    </footer>
+
+    <!-- Script pour générer le QR Code -->
+    <script>
+        function generateHexId() {
+            // Générer un nombre hexadécimal aléatoire de 6 caractères
+            return Math.floor(Math.random() * 16777215).toString(16).padStart(6, '0');
+        }
+
+        function generateQrCode() {
+            var qrcodeContainer = document.getElementById('qrcode');
+            var qrLinkElement = document.getElementById('qrLink');
+            qrcodeContainer.innerHTML = ''; // Efface tout QR Code précédemment généré
+
+            // Générer l'ID hexadécimal
+            var hexId = generateHexId();
+            // Lien pour lequel on veut générer le QR Code avec l'ID hexadécimal
+            var link = "http://localhost/pages/Informations.php?id=" + hexId;
+
+            // Générer le QR Code avec le lien
+            new QRCode(qrcodeContainer, {
+                text: link,
+                width: 256, // Taille du QR Code augmentée
+                height: 256
+            });
+
+            // Affiche le lien en dessous du QR code
+            qrLinkElement.href = link;
+            qrLinkElement.textContent = link;
+        }
+    </script>
+
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Achat Médaillon - Pet'Care</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/QrCode.css">
+</head>
+<body>
+    <div class="header">
+        <img src="../images/logo.png" alt="Logo Pet'Care" class="logo" onclick="window.location.href='index.php'">
+        <nav class="nav-links">
+            <a href="index.php">Accueil</a>
+            <a href="Formulaire.html">Gérer les informations</a>
+            <a href="FormulaireVet.html">Ajouter des informations médicales</a>
+            <a href="Contact.html">Contact</a>
+        </nav>
+        <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
+    </div>
+
+    <!-- Contenu principal -->
+    <div class="container">
+        <h1>Achat d'un Médaillon avec QR Code</h1>
+        
+        <div class="form-group">
+            <label for="animalId">Entrez l'ID de votre animal :</label>
+            <input type="text" id="animalId" placeholder="ID de l'animal" required>
+        </div>
+        
+        <button onclick="purchaseMedallion()" class="aButton">Acheter Médaillon</button>
+
+        <div id="purchaseMessage" class="purchase-message"></div>
+    </div>
+
+    <footer>
+        &copy; 2024 Pet'Care. Tous droits réservés.
+    </footer>
+
+    <script>
+        function purchaseMedallion() {
+            var animalId = document.getElementById('animalId').value;
+            var purchaseMessageElement = document.getElementById('purchaseMessage');
+
+            // Vérifier que l'ID de l'animal n'est pas vide
+            if (animalId.trim() === '') {
+                purchaseMessageElement.textContent = 'Veuillez entrer un ID valide.';
+                purchaseMessageElement.style.color = 'red';
+                return;
+            }
+
+            // Logique d'achat (simulation ici)
+            purchaseMessageElement.textContent = `Médaillon acheté pour l'animal avec l'ID : ${animalId}.`;
+            purchaseMessageElement.style.color = 'green';
+
+            // Vous pouvez ici inclure une logique pour rediriger vers un paiement ou autre.
+        }
+    </script>
+</body>
+</html>

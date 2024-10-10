@@ -1,9 +1,10 @@
 .container {
     padding: 20px;
-    display: flex;
-    flex-wrap: wrap; /* Permet aux cartes de passer à la ligne suivante si nécessaire */
-    justify-content: center; /* Centre les cartes horizontalement */
-    gap: 10px; /* Ajoute un espacement entre les cartes */
+    margin: 20px auto; /* Centre le container */
+    max-width: 600px;
+    background: rgba(255, 255, 255, 0.8); /* Arrière-plan blanc avec 80% d'opacité */
+    border-radius: 8px;
+    text-align: center; /* Centre le contenu à l'intérieur du container */
 }
 
 .card {
