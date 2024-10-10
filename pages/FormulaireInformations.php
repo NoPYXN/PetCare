@@ -68,9 +68,7 @@ $idPet = isset($_GET['id']) ? $_GET['id'] : null;
                 <label for="image">Photo de l'animal</label>
                 <input type="file" id="image" name="photo" accept="image/*">
             </div>
-            <div class="form-group button-group">
-                <button type="submit">Ajouter l'animal</button>
-            </div>
+            <button type="submit" class="aButton">Ajouter l'animal</button>
         </form>
     </div>
 

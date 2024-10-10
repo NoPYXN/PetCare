@@ -21,7 +21,6 @@
 
     <div class="container">
         <?php
-
         $host = 'localhost';
         $dbname = "pet'care";
         $username = 'root';
@@ -50,9 +49,24 @@
                     move_uploaded_file($tmp_name, $photoPath);
                 }
 
-                // Insertion dans la base de données avec petId
-                $stmt = $pdo->prepare("INSERT INTO pet (petName, species, breed, gender, birth_date, userId, idPet, photo)
-                                        VALUES (:petName, :species, :breed, :gender, :birth_date, :userId, :idPet, :photo)");
+                // Vérifier si l'animal existe déjà
+                $stmt = $pdo->prepare("SELECT * FROM pet WHERE idPet = :idPet");
+                $stmt->bindParam(':idPet', $idPet, PDO::PARAM_INT);
+                $stmt->execute();
+
+                if ($stmt->rowCount() > 0) {
+                    // Si l'animal existe, on fait une mise à jour
+                    $stmt = $pdo->prepare("UPDATE pet SET petName = :petName, species = :species, breed = :breed, gender = :gender, birth_date = :birth_date, userId = :userId, photo = :photo
+                                            WHERE idPet = :idPet");
+                    echo "Animal mis à jour avec succès !";
+                } else {
+                    // Sinon, on insère un nouvel enregistrement
+                    $stmt = $pdo->prepare("INSERT INTO pet (petName, species, breed, gender, birth_date, userId, idPet, photo)
+                                            VALUES (:petName, :species, :breed, :gender, :birth_date, :userId, :idPet, :photo)");
+                    echo "Animal ajouté avec succès !";
+                }
+
+                // Bind des paramètres pour la mise à jour ou l'insertion
                 $stmt->bindParam(':petName', $petName);
                 $stmt->bindParam(':species', $species);
                 $stmt->bindParam(':breed', $breed);
@@ -62,18 +76,20 @@
                 $stmt->bindParam(':idPet', $idPet);
                 $stmt->bindParam(':photo', $photoPath);
 
+                // Exécution de la requête
                 if ($stmt->execute()) {
-                    echo "Animal ajouté avec succès !";
+                    echo "Opération réussie !";
                 } else {
-                    echo "Erreur lors de l'ajout de l'animal.";
+                    echo "Erreur lors de l'opération.";
                 }
             }
         } catch (PDOException $e) {
             echo "Erreur lors de la connexion à la base de données : " . $e->getMessage();
         }
         ?>
+
         <br/>
-        <a href="index.php" class="button-home">Voir la page de l'animal</a>
+        <a href='Informations.php?id=<?php echo $idPet; ?>' class="aButton">Voir la page de l'animal</a>
     </div>
 </body>
 </html>

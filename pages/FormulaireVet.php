@@ -35,7 +35,7 @@
             }
 
             if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-                $petId = $conn->real_escape_string($_POST['petId']);
+                $petId = $conn->real_escape_string($_POST['idPet']);
                 $weight = $conn->real_escape_string($_POST['weight']);
                 $diagnostic = $conn->real_escape_string($_POST['diagnostic']);
                 $treatment = $conn->real_escape_string($_POST['treatment']);
@@ -56,7 +56,7 @@
         ?>
 
         <br/>
-        <a href="index.php" class="button-home">Retour à l'accueil</a>
+        <a href='InformationsDetails.php?id=<?php echo $petId; ?>' class="aButton">Voir la page de l'animal</a>
     </div>
 </body>
 </html>

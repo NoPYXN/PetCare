@@ -2,7 +2,7 @@
     padding: 20px;
     margin: 20px auto; /* Centre verticalement et horizontalement */
     max-width: 600px;
-    background: #bebebe;
+    background: #fff;
     border-radius: 8px;
 }
 
@@ -36,8 +36,8 @@
 
 .form-group button {
     padding: 10px 20px;
-    background-color: #0066CC;
-    color: white;
+    background-color: #3EB489;
+    color: #000;
     border: none;
     border-radius: 4px;
     font-size: 16px;
@@ -47,5 +47,6 @@
 }
 
 .form-group button:hover {
-    background-color: #005bb5;
+    background-color: #3EB489;
 }
+

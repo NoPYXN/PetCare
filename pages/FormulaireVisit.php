@@ -1,3 +1,15 @@
+<?php
+    session_start();
+
+    // Redirection si l'utilisateur n'est pas connecté
+    if (!isset($_SESSION['user_id'])) {
+        header("Location: login.php");
+        exit();
+    }
+
+    // Récupération de l'ID de l'animal depuis l'URL
+    $idPet = isset($_GET['id']) ? $_GET['id'] : null;
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,7 +17,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ajout de données médicales - Pet'Care</title>
     <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/FormulaireEntreprise.css">
+    <link rel="stylesheet" href="../css/FormulaireVisit.css">
 </head>
 <body>
     <div class="header">
@@ -22,10 +34,9 @@
     <div class="container">
         <h1>Ajouter des données médicales pour un chien</h1>
         <form action="FormulaireVet.php" method="POST">
-            <div class="form-group">
-                <label for="petId">ID de l'animal</label>
-                <input type="number" id="petId" name="petId" placeholder="Entrez l'ID de l'animal" required>
-            </div>
+
+            <input type="hidden" id="idPet" name="idPet" value="<?php echo htmlspecialchars($idPet); ?>">
+
             <div class="form-group">
                 <label for="weight">Poids</label>
                 <input type="number" id="weight" name="weight" step="0.1" placeholder="Entrez le poids en kg" required>
@@ -46,9 +57,7 @@
                 <label for="notes">Notes supplémentaires</label>
                 <textarea id="notes" name="notes" placeholder="Entrez des notes supplémentaires"></textarea>
             </div>
-            <div class="form-group button-group">
-                <button type="submit">Ajouter les données médicales</button>
-            </div>
+            <button type="submit" class="aButton">Ajouter les données médicales</button>
         </form>
     </div>
 

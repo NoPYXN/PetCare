@@ -62,6 +62,21 @@ html, body {
     margin: 20px 0;
 }
 
+.aButton {
+    padding: 10px 20px;
+    background-color: #3EB489;
+    color: #000;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    cursor: pointer;
+    display: block;
+    margin: 20px auto; /* Centre le bouton et ajoute de l'espace autour */
+}
+    .aButton:hover {
+        background-color: #F6E8D4;
+    }
+
 footer {
     background-color: #333;
     color: white;

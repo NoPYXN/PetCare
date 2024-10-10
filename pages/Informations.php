@@ -63,6 +63,10 @@
             } catch (PDOException $e) {
                 echo "Erreur lors de la connexion à la base de données : " . $e->getMessage();
             }
+
+            echo "<a href='FormulaireInformations.php?id=" . urlencode($id) . "'>";
+            echo "<button class='aButton'>Modifier les informations</button>";
+            echo "</a>";
             ?>
         </div>
     </div>
@@ -70,17 +74,5 @@
     <footer>
         &copy; 2024 Pet'Care. Tous droits réservés.
     </footer>
-
-    <script> 
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "20%";
-            document.getElementById("mySidenav").style.minWidth = "200px";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.minWidth = "0px";
-            document.getElementById("mySidenav").style.width = "0";
-        }
-    </script>
 </body>
 </html>

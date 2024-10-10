@@ -118,6 +118,10 @@
             } catch (PDOException $e) {
                 echo "Erreur lors de la connexion à la base de données : " . $e->getMessage();
             }
+
+            echo "<a href='FormulaireVisit.php?id=" . urlencode($id) . "'>";
+            echo "<button class='aButton'>Ajouter une visite</button>";
+            echo "</a>";
             ?>
         </div>
     </div>
