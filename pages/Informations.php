@@ -21,7 +21,6 @@
     </div>
 
     <div class="container">
-        <img src="../images/logo.png" alt="Co-Lock Logo" class="logoPage">
 
         <div class="description">
             <?php
@@ -37,13 +36,18 @@
                 if (isset($_GET['id'])) {
                     $id = $_GET['id'];
                 
-                    $stmt = $pdo->prepare("SELECT * FROM pet, user WHERE idPet = :id");
+                    $stmt = $pdo->prepare(" SELECT * FROM pet JOIN user ON pet.userId = user.userId WHERE pet.idPet = :id");
                     $stmt->bindParam(':id', $id, PDO::PARAM_INT);
                     $stmt->execute();
                 
                     if ($stmt->rowCount() > 0) {
                         $pet = $stmt->fetch(PDO::FETCH_ASSOC);
                         echo "<h1>Détails de l'animal</h1>";
+
+                        echo "<div style='text-align: center; margin-bottom: 20px;'>";
+                        echo "<img src='" . htmlspecialchars($pet['photo']) . "' alt='Image de " . htmlspecialchars($pet['petName']) . "' style='max-width: 100%; height: auto; max-height: 200px;'>";
+                        echo "</div>";
+
                         echo "<p><strong>Nom:</strong> " . htmlspecialchars($pet['petName']) . "</p>";
                         echo "<p><strong>Espèce:</strong> " . htmlspecialchars($pet['species']) . "</p>";
                         echo "<p><strong>Date de naissance:</strong> " . htmlspecialchars($pet['birth_date']) . "</p>";

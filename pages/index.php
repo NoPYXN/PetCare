@@ -55,10 +55,6 @@
     <!-- Pied de page -->
     <footer>
         &copy; 2024 Pet'Care. Tous droits réservés.
-        <div class="footer-links">
-            <a href="mentions-legales.html">Mentions légales</a>
-            <a href="politique-de-confidentialite.html">Politique de confidentialité</a>
-        </div>
     </footer>
 
 </body>

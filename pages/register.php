@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         // Récupération des données du formulaire
         $name = $_POST['name'];
         $email = $_POST['email'];
+        $phoneNumber = $_POST['phoneNumber']; // Récupération du numéro de téléphone
         $password = $_POST['password'];
         $confirm_password = $_POST['confirm_password'];
 
@@ -26,10 +27,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $hashed_password = crypt($password, $salt);
 
             // Insertion dans la base de données
-            $stmt = $pdo->prepare("INSERT INTO user (name, emailAdress, password) VALUES (:name, :emailAdress, :password)");
+            $stmt = $pdo->prepare("INSERT INTO user (name, emailAdress, phoneNumber, password) VALUES (:name, :emailAdress, :phoneNumber, :password)");
             $stmt->execute([
                 'name' => $name,
                 'emailAdress' => $email,
+                'phoneNumber' => $phoneNumber, // Ajout du numéro de téléphone
                 'password' => $hashed_password
             ]);
 
@@ -41,73 +43,3 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 }
 ?>
-
-<!DOCTYPE html>
-<html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Inscription - Pet'Care</title>
-    <link rel="stylesheet" href="../css/styles.css">
-    <link rel="stylesheet" href="../css/register.css">
-</head>
-<body>
-    <!-- Header Section -->
-    <header>
-        <div class="header">
-            <img src="../images/logo.png" alt="Pet'Care Logo" class="logo" onclick="window.location.href='index.php'">
-            <nav class="nav-links">
-                <a href="index.php">Accueil</a>
-                <a href="Formulaire.html">Gérer les informations</a>
-                <a href="FormulaireVet.html">Ajouter des informations médicales</a>
-                <a href="Contact.html">Contact</a>
-            </nav>
-            <div class="profile-icon" onclick="window.location.href='account.html'">&#128100;</div>
-        </div>
-    </header>
-
-    <!-- Registration Form Section -->
-    <main>
-        <div class="container">
-            <div class="register-form">
-                <h2>Inscription</h2>
-
-                <!-- Affichage des messages d'erreur ou de succès -->
-                <?php if (isset($error_message)): ?>
-                    <div class="error-message">
-                        <p><?php echo $error_message; ?></p>
-                    </div>
-                <?php endif; ?>
-
-                <?php if (isset($success_message)): ?>
-                    <div class="success-message">
-                        <p><?php echo $success_message; ?></p>
-                    </div>
-                <?php endif; ?>
-
-                <form action="Account.html" method="POST">
-                    <button type="submit" class="btn-register">Connectez-vous ici</button>
-                </form>
-            </div>
-        </div>
-    </main>
-
-    <!-- Footer Section -->
-    <footer>
-        <p>&copy; 2024 Pet'Care. Tous droits réservés.</p>
-    </footer>
-
-    <!-- JavaScript for Sidebar Navigation -->
-    <script> 
-        function openNav() {
-            document.getElementById("mySidenav").style.width = "20%";
-            document.getElementById("mySidenav").style.minWidth = "200px";
-        }
-
-        function closeNav() {
-            document.getElementById("mySidenav").style.minWidth = "0px";
-            document.getElementById("mySidenav").style.width = "0";
-        }
-    </script>
-</body>
-</html>

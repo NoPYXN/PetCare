@@ -15,13 +15,6 @@
     text-align: center;
 }
 
-.card img {
-    width: 100%;
-    border-radius: 8px;
-    height: 150px;
-    object-fit: cover;
-}
-
 .card h3 {
     margin: 10px 0;
     font-size: 18px;
@@ -44,14 +37,12 @@ img {
 }
 
 .nav-links a {
-    color: white;
+    color: #000;
     margin: 0 15px;
     font-weight: bold;
 }
 
-.nav-links a:hover {
-    text-decoration: underline;
-}
+
 
 /* Section principale (Hero) */
 .hero {
@@ -128,9 +119,9 @@ img {
 }
 
 .card-image {
-    width: 100%;
-    height: 150px;
-    object-fit: cover;
-    border-radius: 8px;
-    margin-bottom: 10px;
+    width: 200px; /* Spécifie la largeur de l'image */
+    height: 200px; /* Spécifie la hauteur de l'image */
+    object-fit: cover; /* Pour garder le ratio sans déformation */
+    margin: 0 auto; /* Centre l'image */
+    display: block; /* Nécessaire pour que le margin auto fonctionne */
 }
